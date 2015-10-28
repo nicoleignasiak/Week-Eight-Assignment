@@ -50,10 +50,26 @@ function runit() {
 import turtle
 t = turtle.Turtle()
 
-for c in ["red","green","blue","yellow","orange"]:
-    t.color(c)
-    t.forward(100)
-    t.left(144)
+# Get side length for user and make sure its between 2 and 25
+sides = int(input("Please enter the number of sides you would like between 3 and 24: "))
+
+while sides < 3 or sides > 24:
+    sides = int(input("Please enter the number of sides you would like between 3 and 24: "))
+
+# Getting rid of magic numbers
+totalAngle = 180
+sideSubtraction = 2
+lineLength = 20
+rotation = totalAngle - (((sides - sideSubtraction)*totalAngle)/sides)
+
+# Made color list
+colors = ['red', 'darkred', 'darkorchid', 'orange', 'coral', 'cornsilk', 'yellow', 'green', 'darkgreen', 'blue', 'cyan', 'aqua', 'aquamarine', 'darkturquoise', 'blueviolet', 'purple', 'pink', 'black', 'chocolate', 'gray', 'darkgray', 'beige', 'brown']
+
+# Makes pologyon with requested number of sides in different colors
+for number in range(sides):
+    t.color(colors[number])
+    t.forward(lineLength)
+    t.left(rotation)
 
 </textarea><br /> 
 <button type="button" onclick="runit()">Run</button> 
